@@ -137,5 +137,5 @@ question
 choices
 Write-host "New Settings:" -ForegroundColor Magenta
 ForEach ($server in ($computer)) {
-    credverify
+    Invoke-Command -ComputerName $server {Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\'} | Select-Object PSComputerName, defaultusername , defaultpassword
 } 
