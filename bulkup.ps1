@@ -68,11 +68,6 @@ function usrfun {
     Invoke-Command -ComputerName $computer { Set-Itemproperty -path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\' -Name 'defaultusername' -value  $using:userna }  
 }
 
-function credverify {
-    $user = Invoke-Command -ComputerName $server { Get-ItemProperty -Path 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\' }  | Select-Object PSComputerName, defaultusername, defaultpassword
-    write-host "$user" -ForegroundColor Green
-}
-
 function choices {
     write-host "UPDATE USERNAME OR PASSWORD IN BULK" -ForegroundColor cyan
     write-host "A) Username" -foregroundcolor yellow
